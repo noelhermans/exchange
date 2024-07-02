@@ -36,3 +36,8 @@ Users experienced significant delays and interruptions due to frequent pod resta
 - Implement improved monitoring for future configuration changes.
 - Conduct thorough testing before applying cluster downsizing or significant updates.
 - Enhance team training on Kubernetes best practices to prevent recurrence.
+
+
+## Learnings
+
+Implementing numerous changes simultaneously can lead to instabilities that are difficult to diagnose.
