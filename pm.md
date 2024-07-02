@@ -41,3 +41,4 @@ Users experienced significant delays and interruptions due to frequent pod resta
 ## Learnings
 
 Implementing numerous changes simultaneously can lead to instabilities that are difficult to diagnose.
+We are treating and addressing changes independently; it would be more effective to examine their dependencies and plan accordingly.
