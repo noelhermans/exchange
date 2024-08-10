@@ -130,10 +130,6 @@ kubectl taint nodes multi-node-cx32-pool-small-static-worker3 app=corr-new:NoSch
 
 Below example is the solution -> using **2.**
 
-#### AI
-
-You have several ways to control pod scheduling and ensure they land on the correct nodes in Kubernetes:
-
 **1. Node Selectors (Simplest Approach)**
 
    * **How it works:** You add labels to nodes and specify matching labels in your pod definitions. 
@@ -233,3 +229,34 @@ You have several ways to control pod scheduling and ensure they land on the corr
        containers:
        - name: my-container
          image
+
+
+
+#### How it will look like in the deployment
+```yaml
+...
+        tolerations:
+        - effect: NoSchedule
+          key: app
+          operator: Equal
+          value: corr-new
+        affinity:
+          nodeAffinity:
+            requiredDuringSchedulingIgnoredDuringExecution:
+              nodeSelectorTerms:
+              - matchExpressions:
+                - key: size
+                  operator: In
+                  values:
+                  - medium
+                  - large
+#            preferredDuringSchedulingIgnoredDuringExecution:
+#              - weight: 100
+#                preference:
+#                  matchExpressions:
+#                  - key: size
+#                    operator: In
+#                    values:
+#                    - medium
+#                    - large
+```
